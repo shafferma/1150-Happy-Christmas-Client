@@ -9,6 +9,10 @@ const HomePage = () => {
         <h1 className="title">Happy Christmas</h1>
         <p className="sub-title">It's a wonderful world. Go decorating.</p>
       </div>
+      <div>
+        {/* photo grid display */}
+      
+      </div>
     </Container>
   );
 };

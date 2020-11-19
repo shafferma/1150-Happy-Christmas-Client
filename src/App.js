@@ -51,11 +51,12 @@ function App() {
           <Route path="/login">
             <LoginPage updateToken={updateToken} />
           </Route>
-          {/* <PrivateRoute path="/some-route/:id">
-            <SomePage />
+          {/* <PrivateRoute path="/photo/:id">
+            <MyPortfolio token={sessionToken} updateToken={updateToken} />
           </PrivateRoute> */}
           <Route path="/">
             <HomePage />
+            {/* token={sessiontoken} updateToken={updateToken} */}
           </Route>
         </Switch>
       </AppContainer>

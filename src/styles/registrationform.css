@@ -1,8 +1,47 @@
+
+
 #modalImage {
     display: flex;
+    flex-direction: column;
     background-image: url(../styles/assets/vintage-christmas-tree.jpg);
     height: 370px;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 50%;
+    width: 100%;
 }
+
+#registerModal {
+    font-family: 'Tangerine', cursive;
+    background-color: rgb(225, 221, 222)
+    
+}
+
+.modalHeader {
+    background-color: rgb(225, 221, 222)
+}
+
+#mainTitle {
+    font-size: 32px;
+    padding-top: 20px;
+    z-index: 2;
+}
+
+#modalBody {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    background-color: rgb(225, 221, 222)
+}
+
+@media screen and (min-width: 768px) {
+    #modalImage {
+      /* display: block; */
+    }
+    #modalForm {
+      width: 50%;
+    }
+  }
+  .modalFooter {
+    background-color: rgb(225, 221, 222);
+    justify-content: center;
+ }
+ 

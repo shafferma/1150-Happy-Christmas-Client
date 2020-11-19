@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import "../styles/Login.css";
+import Snowman from "../styles/assets/snowman-2.JPG";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -31,8 +33,9 @@ const Login = (props) => {
   };
   return (
     <div id="divMain">
+      <img src={Snowman} alt="A snowman"/>
       <div id="loginForm">
-        <h1>Login</h1>
+        {/* <h1>Login</h1> */}
         <Form id="formBody" onSubmit={handleSubmit}>
           <FormGroup>
             <Label htmlFor="username">Username</Label>

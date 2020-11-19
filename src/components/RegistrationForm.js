@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 // import ApiProvider from "../utils/ApiProvider";
 import { useHistory } from "react-router-dom";
+import "../styles/RegistrationForm.css"
 
 // checks if string has one special character or one number
 const validateUsername = RegExp("((?=.*?[0-9]).*|(?=.*?[#?!@$%^&*-]).*)");
@@ -73,7 +74,6 @@ const RegistrationForm = (props) => {
       <Modal isOpen={props.open} id="registerModal">
         <ModalHeader className="modalHeader">
           <div id="mainTitle">Welcome to Happy Christmas!</div>
-
           <Button className="closeModal" onClick={props.close}>
             <span>x</span>
           </Button>
@@ -120,7 +120,7 @@ const RegistrationForm = (props) => {
             </Form>
           </div>
         </ModalBody>
-        <ModalFooter className="modalFooter">
+        <ModalFooter  className="modalFooter">
           <Button form="registerForm" id="modalSubmitButton" type="submit">
             Create Account
           </Button>{" "}
