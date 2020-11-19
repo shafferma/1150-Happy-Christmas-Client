@@ -1,0 +1,8 @@
+#modalImage {
+    display: flex;
+    background-image: url(../styles/assets/vintage-christmas-tree.jpg);
+    height: 370px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+}

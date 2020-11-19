@@ -41,14 +41,14 @@ const RegistrationForm = (props) => {
       if (password.length < 5) throw "Password must be 5 or more characters";
 
       // if username does not have 4 or more characters and/or number or special character
-      if (username.length < 4 || !validateUsername.test(username))
-        throw "Username must be 4 or more characters and include 1 number and/or special character";
+      if (username.length < 4 ) // || !validateUsername.test(username)
+        throw "Username must be 4 or more characters"; // and include 1 number and/or special character
 
       // if password and passwordConfirm are not the same, stop
       if (password !== passwordConfirm) throw "Passwords do not match";
 
       // everything passes, submit data
-      fetch(process.env.REACT_APP_API_URL + "user/register", {
+      fetch(process.env.REACT_APP_API_URL + "/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const RegistrationForm = (props) => {
           props.updateToken(data.sessionToken);
           props.close();
           resetForm();
-          history.push("/trips");
+          history.push("/homepage");
         })
         .catch((error) => console.log(error));
     } catch (error) {
