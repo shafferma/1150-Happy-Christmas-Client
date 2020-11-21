@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import "../styles/HomePage.css"
+import "styles/HomePage.css"
 
 const HomePage = () => {
   return (

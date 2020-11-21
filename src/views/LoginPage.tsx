@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import "../styles/Login.css";
-import Snowman from "../components/Snowman";
-import ApiProvider from "../utils/ApiProvider";
+import "styles/Login.css";
+import Snowman from "components/Snowman";
+import ApiProvider from "utils/ApiProvider";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");

@@ -10,9 +10,9 @@ import {
   ModalHeader,
   ModalFooter,
 } from "reactstrap";
-import ApiProvider from "../utils/ApiProvider";
+import ApiProvider from "utils/ApiProvider";
 import { useHistory } from "react-router-dom";
-import "../styles/RegistrationForm.css";
+import "styles/RegistrationForm.css";
 
 // checks if string has one special character or one number
 const validatePassword = RegExp("((?=.*?[0-9]).*|(?=.*?[#?!@$%^&*-]).*)");

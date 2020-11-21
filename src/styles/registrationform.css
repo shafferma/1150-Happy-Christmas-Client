@@ -3,7 +3,7 @@
 #modalImage {
     display: flex;
     flex-direction: column;
-    background-image: url(../styles/assets/vintage-christmas-tree.jpg);
+    background-image: url(assets/vintage-christmas-tree.jpg);
     height: 370px;
     background-size: contain;
     background-repeat: no-repeat;

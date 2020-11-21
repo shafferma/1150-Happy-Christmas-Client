@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
-import { ApiProvider } from "../utils/ApiProvider";
+import ApiProvider from "utils/ApiProvider";
 
 function PhotoGridItem(props, context) {
   const { photo } = props;
@@ -20,5 +20,4 @@ function PhotoGridItem(props, context) {
     </div>
   );
 }
-
-export default AppContainer;
+export default PhotoGridItem;

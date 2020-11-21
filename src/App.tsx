@@ -20,15 +20,16 @@ function App() {
   const [sessionToken, setSessionToken] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSessionToken(localStorage.getItem("token"));
+    const token = localStorage.getItem("token")
+    if (token) {
+      setSessionToken(token);
       AUTH.isAuthenticated = true;
     }
 
     // console.info("use", sessionToken, AUTH);
   }, [sessionToken]);
 
-  const updateToken = (newToken) => {
+  const updateToken = (newToken: string) => {
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
     console.log(sessionToken);
@@ -70,25 +71,25 @@ function App() {
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
-function PrivateRoute({ children, ...rest }) {
-  // console.info("sessionToken", localStorage.getItem("token"));
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        localStorage.getItem("token") ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+// function PrivateRoute({ children, ...rest }) {
+//   // console.info("sessionToken", localStorage.getItem("token"));
+//   return (
+//     <Route
+//       {...rest}
+//       render={({ location }) =>
+//         localStorage.getItem("token") ? (
+//           children
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: "/login",
+//               state: { from: location },
+//             }}
+//           />
+//         )
+//       }
+//     />
+//   );
+// }
 
 export default App;
