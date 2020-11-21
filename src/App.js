@@ -9,6 +9,7 @@ import {
 import Navbar from "./components/Navbar";
 import HomePage from "./views/HomePage";
 import LoginPage from "./views/LoginPage";
+import MyPortfolio from "./views/MyPortfolio";
 import AppContainer from "./components/AppContainer";
 
 const AUTH = {
@@ -50,6 +51,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <LoginPage updateToken={updateToken} />
+          </Route>
+          <Route path="/photos">
+            <HomePage />
           </Route>
           {/* <PrivateRoute path="/photo/:id">
             <MyPortfolio token={sessionToken} updateToken={updateToken} />

@@ -32,16 +32,25 @@
     background-color: rgb(225, 221, 222)
 }
 
-@media screen and (min-width: 768px) {
-    #modalImage {
-      /* display: block; */
-    }
-    #modalForm {
-      width: 50%;
-    }
-  }
   .modalFooter {
     background-color: rgb(225, 221, 222);
     justify-content: center;
  }
  
+ 
+@media screen and (min-width: 768px) {
+  #modalImage {
+    /* display: block; */
+  }
+  #modalForm {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 360px) {
+  #modalImage {
+    /* display: block; */
+  }
+  #modalForm {
+    width: 100%;
+  }
+}
