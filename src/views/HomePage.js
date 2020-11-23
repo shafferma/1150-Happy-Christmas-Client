@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import "styles/HomePage.css"
+import PhotoGrid from "components/PhotoGrid"
+import ApiProvider from "utils/ApiProvider";
 const photo = require('styles/assets/company-tree.JPG')
 
 const HomePage = () => {
@@ -24,6 +26,20 @@ const HomePage = () => {
 
   // img.src = photo
 
+  const [photos, setPhotos] = useState([])
+
+  function getPhotos() {
+    ApiProvider.get('photos')
+    .then(response => {
+      setPhotos(response.data.data.rows)
+    })
+  }
+  
+  useEffect(() => {
+    getPhotos()
+  }, [])
+  
+
   return (
     <Container>
       <div id="main">
@@ -31,8 +47,7 @@ const HomePage = () => {
         <p className="sub-title">It's a wonderful world. Go decorating.</p>
       </div>
       <div>
-        {/* photo grid display */}
-        {'sefsfsef'}
+       <PhotoGrid  items={photos} />
       </div>
     </Container>
   );

@@ -9,7 +9,6 @@ import {
 import Navbar from "./components/Navbar";
 import HomePage from "./views/HomePage";
 import LoginPage from "./views/LoginPage";
-import MyPortfolio from "./views/MyPortfolio";
 import AppContainer from "./components/AppContainer";
 
 const AUTH = {
@@ -29,7 +28,7 @@ function App() {
     // console.info("use", sessionToken, AUTH);
   }, [sessionToken]);
 
-  const updateToken = (newToken: string) => {
+  const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
     console.log(sessionToken);

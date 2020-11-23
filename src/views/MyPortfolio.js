@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "reactstrap";
-import "styles/MyPortfolio.css";
+// import "styles/MyPortfolio.css";
 
 const MyPortfolio = () => {
   return (
