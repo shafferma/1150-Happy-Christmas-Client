@@ -25,6 +25,7 @@ const MyPortfolio = () => {
       <div>
         <h1>My photos</h1>
         <Grid  items={photos} component={PhotoGridItem} />
+        {/* show favorited items */}
       </div>
     </Container>
   );
