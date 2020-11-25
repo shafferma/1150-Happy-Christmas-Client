@@ -14,7 +14,7 @@ export const getPhotos = async (params = { limit: 12, page: 1}) => {
 }
 export const createPhoto = async (photo) => {
     try {
-        const response = ApiProvider.post('photo', {photo})
+        const response = ApiProvider.post('photo', photo)
         return response.data
     } catch (error) {
         throw error

@@ -11,14 +11,14 @@ import {
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import RegistrationForm from "./RegistrationForm";
-import UploadPhoto from "./PhotoUpload";
+import PhotoUpload from "./PhotoUpload";
 import "styles/Navbar.css";
 
 const Sitebar = (props) => {
   const [collapsed, setCollapsed] = useState(true);
   const [showRegister, setShowRegister] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  // const [hasUploaded, setHasUploaded] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
 
   useEffect(() => {
     document.addEventListener("scroll", handleScroll);
@@ -48,8 +48,9 @@ const Sitebar = (props) => {
   const openRegister = () => setShowRegister(true);
   const closeRegister = () => setShowRegister(false);
 
-  // const openUpload = () => setOpenUpload(true);
-  // const closeUpload = () => setOpenUpload(false);
+
+  const openUpload = () => setShowUpload(true);
+  const closeUpload = () => setShowUpload(false);
 
   return (
     <div
@@ -83,9 +84,9 @@ const Sitebar = (props) => {
                 <NavItem>
                   <NavLink href="/myportfolio">Portfolio</NavLink>
                 </NavItem>
-                {/* <NavItem>
-                  <Button onClick={openUpload}>Photo Upload</Button>
-                </NavItem> */}
+                <NavItem>
+                  <Button  onClick={openUpload} className="photo-btn">Photo Upload</Button>
+                </NavItem>
                 <NavItem>
                   <Button onClick={handleLogout}>Logout</Button>
                 </NavItem>
@@ -99,11 +100,10 @@ const Sitebar = (props) => {
         open={showRegister}
         close={closeRegister}
       />
-      {/* <PhotoUpload
-        updateToken={props.updateToken}
-        open={hasUploaded}
+      <PhotoUpload
+        open={showUpload}
         close={closeUpload}
-      /> */}
+      />
     </div>
   );
 };
