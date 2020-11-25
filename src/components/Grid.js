@@ -3,15 +3,16 @@ import React, { useState, useEffect } from "react";
 import 'styles/Grid.scss';
 
 function Grid(props, context) {
-  // const { photo } = props;
-
+  const GridItem = props.component
 
   function generateGridItems() {
     return props?.items?.map((value, index) => {
       return (
-        <img
-         src={value}
-         key={`grid-item-${index}`} />
+        <GridItem
+         item={value}
+         key={`grid-item-${index}`} 
+         className="GridItem"
+         />
       )
     }) || null
   }

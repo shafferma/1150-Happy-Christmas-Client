@@ -2,7 +2,8 @@
 
 # Cool Codepens I want to rip
 - https://codepen.io/pyrografix/pen/VYeEMB
-
+- https://codepen.io/s_crystal/pen/pJpMZX
+- https://codepen.io/chrisgannon/pen/zyOjYw
 
 
 ## Highlights

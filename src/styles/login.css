@@ -3,13 +3,11 @@
 }
 
 #divMain {
-    /* background-image: url(./assets/snowman.JPG);
-    background-size: contain;
-    background-repeat: no-repeat; */
     width: 100%;
 }
 
 #loginForm {
+    display: flex;
     font-family: 'Tangerine', cursive;
     font-weight: bold;
     font-size: 28px;
@@ -26,12 +24,16 @@ width: 280px;
 }
 
 /*  tablet */
-/* @media screen and (min-width: 320px) {
+/* @media screen and (min-width: 360px) {
     #loginForm {
       max-width: 330px;
     }
   }
   @media screen and (min-width: 768px) {
+    #loginForm {
+      max-width: 500px;
+    }
+  @media screen and (min-width: 1200px) {
     #loginForm {
       max-width: 500px;
     }

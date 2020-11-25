@@ -1,0 +1,36 @@
+.PhotoGridItem {
+
+  &__photo {
+    --grid-item-height: auto;
+    height: var(--grid-item-height);
+    overflow: hidden;
+    @media screen and (min-width: 680px) {
+      --grid-item-height: 400px;
+    }
+    @media screen and (min-width: 1024) {
+      --grid-item-height: 300px;
+    }
+    @media screen and (min-width: 1200px) {
+      --grid-item-height: 200px;
+    }
+  }
+
+  h4 {
+      font-family: 'Tangerine', cursive;
+      font-size: 48px;
+      line-height: 80%;
+      padding: 0;
+      margin: 0;
+  }
+}
+
+
+.username {
+    font-family: 'Ubuntu' sans-serif;
+}
+
+.photo-description {
+ font-family: 'Ubuntu', sans-serif;
+ font-style: italic;
+}
+

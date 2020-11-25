@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "reactstrap";
-import ApiProvider from "utils/ApiProvider";
+import "../styles/PhotoGridItem.scss"
+import FavoriteButton from './FavoriteButton'
 
 function PhotoGridItem(props, context) {
-  const { photo } = props;
-
-  function addFavorite() {
-    ApiProvider.delete(`/favorite/${photo.id}`)
-    .then((response) => {
-        console.log(response.data)
-    });
-  }
+//  const photo = props.item
+ const [photo] = useState(props.item)
 
   return (
-    <div>
-      <Button type="submit" onClick={addFavorite}>
-        Favorite
-      </Button>
+    <div className={`PhotoGridItem ${props.className}`}>
+    <div className="PhotoGridItem__photo">
+     <img src={photo.url} />
+     </div>
+    <FavoriteButton favorite={photo.isFavorite} photoId={photo.id}/>
+     <h4 >
+       {photo.name}
+     </h4>
+     <p className="username">
+       {photo.user.username}
+     </p>
+     <p className="photo-description">
+       {photo.description}
+     </p>
     </div>
   );
 }

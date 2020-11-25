@@ -14,7 +14,7 @@ const Login = (props) => {
     event.preventDefault();
     ApiProvider.post("/login", { username: username, password: password }).then(
       (response) => {
-        props.updateToken(response.data.sessionToken);
+        props.updateToken(response.data.sessionToken, response.data.user);
         // direct the user to the home page after login
         history.push("/home");
       }

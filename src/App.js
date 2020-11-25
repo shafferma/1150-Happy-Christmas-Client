@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./views/HomePage";
 import LoginPage from "./views/LoginPage";
 import AppContainer from "./components/AppContainer";
+import MyPortfolio from "./views/MyPortfolio";
 
 const AUTH = {
   isAuthenticated: false,
@@ -28,10 +29,10 @@ function App() {
     // console.info("use", sessionToken, AUTH);
   }, [sessionToken]);
 
-  const updateToken = (newToken) => {
+  const updateToken = (newToken, user) => {
     localStorage.setItem("token", newToken);
+    localStorage.setItem("user", JSON.stringify(user));
     setSessionToken(newToken);
-    console.log(sessionToken);
   };
 
   const clearToken = () => {
@@ -55,9 +56,9 @@ function App() {
           <Route path="/photos">
             <HomePage />
           </Route>
-          {/* <PrivateRoute path="/photo/:id">
-            <MyPortfolio token={sessionToken} updateToken={updateToken} />
-          </PrivateRoute> */}
+          <PrivateRoute path="/myportfolio">
+            <MyPortfolio />
+          </PrivateRoute>
           <Route path="/">
             <HomePage />
             {/* token={sessiontoken} updateToken={updateToken} */}
@@ -70,25 +71,25 @@ function App() {
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
-// function PrivateRoute({ children, ...rest }) {
-//   // console.info("sessionToken", localStorage.getItem("token"));
-//   return (
-//     <Route
-//       {...rest}
-//       render={({ location }) =>
-//         localStorage.getItem("token") ? (
-//           children
-//         ) : (
-//           <Redirect
-//             to={{
-//               pathname: "/login",
-//               state: { from: location },
-//             }}
-//           />
-//         )
-//       }
-//     />
-//   );
-// }
+function PrivateRoute({ children, ...rest }) {
+  console.info("sessionToken", localStorage.getItem("token"));
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        localStorage.getItem("token") ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+}
 
 export default App;
