@@ -6,8 +6,20 @@
     left: 0;
     z-index: -1;
     overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #b6ccfe 0%, #abc4ff 100%);
-    filter: drop-shadow(0 0 10px white);
+    
+    &:after {
+      display: block;
+      content: '';
+      position: fixed;
+      top: 56px;
+      left: 2vw;
+      width: 96vw;
+      height: 50vh;
+      background: radial-gradient(ellipse at bottom, #c8dbe6 0%, #BBD1DE 100%);
+      filter: drop-shadow(0 0 10px white);
+      border-radius: 20px;
+      z-index: 1;
+    }
 }
   
   @function random_range($min, $max) {
@@ -21,6 +33,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
+    z-index: 5;
     background: white;
     border-radius: 50%;
   

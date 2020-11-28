@@ -12,7 +12,7 @@ import {
 import { useHistory } from "react-router-dom";
 import RegistrationForm from "./RegistrationForm";
 import PhotoUpload from "./PhotoUpload";
-import "styles/Navbar.css";
+import "styles/Navbar.scss";
 
 const Sitebar = (props) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -54,15 +54,14 @@ const Sitebar = (props) => {
 
   return (
     <div
-      id="navbar"
       className={classNames({
         "is-expanded": !collapsed,
         "has-scrolled": hasScrolled,
       })}
     >
-      <Navbar className="NavBar" color="faded" light expand="md">
-        <NavbarBrand href="/" className="mr-auto"></NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+      <Navbar color="faded" light expand="md">
+        {/* <NavbarBrand href="/" className="mr-auto"></NavbarBrand> */}
+        <NavbarToggler onClick={toggleNavbar} className="ml-auto" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
@@ -75,7 +74,7 @@ const Sitebar = (props) => {
                   <NavLink href="/login">Login</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Button onClick={openRegister}>Register</Button>
+                  <Button color="primary" onClick={openRegister}>Register</Button>
                 </NavItem>
               </>
             ) : null}
