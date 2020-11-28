@@ -1,4 +1,4 @@
-.snowfall {
+.SnowFall {
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -16,7 +16,7 @@
     @return $random_range;
   }
   
-  .snow {
+  .SnowFlake {
     $total: 200;
     position: absolute;
     width: 10px;

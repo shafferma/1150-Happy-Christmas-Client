@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 150px;
 }
 
 
@@ -68,7 +67,7 @@
 
 .hat-ribbon {
     background-color: red;
-    width: 88px;
+    width: 83px;
     height: 8px;
     bottom: 45px;
     left: 15px;
@@ -94,8 +93,8 @@
     border-radius: 50%;
     background-color: black;
     position: relative;
-    top: 60px;
-    left: 68px;
+    top: 30px;
+    left: 50px;
     margin-bottom: 16px;
 } 
 
@@ -104,15 +103,15 @@
     height: 4px;
     width: 110px;
     position: absolute;
-    transform: rotate(35deg);
-    bottom: 160px;
-    right: 160px;
+    transform: rotate(32deg);
+    bottom: 140px;
+    right: 131px;
 }
 
 .arm2 {
     right: auto;
-    transform: rotate(135deg);
-    left: 160px;
+    transform: rotate(140deg);
+    left: 130px;
 }
 
 .left-hand, .right-hand {

@@ -1,7 +1,23 @@
-#navbar {
-    color: red;
-}
-
 .photo-btn {
     
 }
+#navbar {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  #navbar.is-expanded,
+  #navbar.has-scrolled {
+    background-color: #006f57;
+  }
+  #navbar a {
+    color: white;
+  }
+  

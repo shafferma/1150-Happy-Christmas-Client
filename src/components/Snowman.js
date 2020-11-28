@@ -1,20 +1,8 @@
 import React from "react";
-import "styles/Snowman.css"
-import "styles/Snowfall.scss"
-
+import "styles/Snowman.scss";
 
 const Snowman = () => {
-  const snowfall = [...Array.from({length: 200})]  
-  function snowFlake() {
-    return snowfall.map((s, i) => (<div key={i} className="snow"/>))
-  }
   return (
-  <div>
-
-    <div className="snowfall">
-      {snowFlake()}
-    </div>
-
     <div className="snowman">
       <div className="face">
         <div className="lefteye"></div>
@@ -47,8 +35,6 @@ const Snowman = () => {
         </div>
       </div>
     </div>
-  </div>
-
   );
 };
 

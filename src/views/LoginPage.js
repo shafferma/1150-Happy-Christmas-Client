@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import "styles/Login.css";
+import "styles/LoginPage.scss";
 import Snowman from "components/Snowman";
 import ApiProvider from "utils/ApiProvider";
+import SnowFall from "components/SnowFall";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -21,12 +22,12 @@ const Login = (props) => {
     );
   };
   return (
-    <div id="divMain">
-      <div id="snow">
+    <div className="LoginPage">
+      <div className="LoginPage__container">
         <Snowman />
-        <div id="loginForm">
+        <div className="LoginForm">
           {/* <h1>Login</h1> */}
-          <Form id="formBody" onSubmit={handleSubmit}>
+          <Form className="Form" onSubmit={handleSubmit}>
             <FormGroup>
               <Label htmlFor="username">Username</Label>
               <Input
@@ -44,12 +45,13 @@ const Login = (props) => {
                 value={password}
               />
             </FormGroup>
-            <Button id="loginButton" type="submit">
+            <Button  id="loginButton" color="primary" type="submit">
               Login
             </Button>
           </Form>
         </div>
       </div>
+      <SnowFall />
     </div>
   );
 };

@@ -60,7 +60,7 @@ const Sitebar = (props) => {
         "has-scrolled": hasScrolled,
       })}
     >
-      <Navbar color="faded" light expand="md">
+      <Navbar className="NavBar" color="faded" light expand="md">
         <NavbarBrand href="/" className="mr-auto"></NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
