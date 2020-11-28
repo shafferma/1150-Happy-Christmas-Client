@@ -20,40 +20,64 @@ const PhotoUpload = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-  // const [passwordConfirm, setPasswordConfirm] = useState("");
-  // const [firstname, setFirstname] = useState("");
-  // const [lastname, setLastname] = useState("");
+  const [uploadedFile, setUploadedFile] = useState('');
 
   const resetForm = () => {
     setName("");
     setDescription("");
     setPhoto("");
-    // setPasswordConfirm("");
-    // setFirstname("");
-    // setLastname("");
+    setUploadedFile('');
   };
 
+  const photoError = (error) => {
+    setPhoto('')
+    setUploadedFile('')
+    alert(error)
+  }
+
   const handlePhoto = (event) => {
-    const file = event.target.files[0]
-    console.info({file})
+    event.preventDefault();
+    try {
+      const file = event.target.files[0]
 
+      const fileSize = Math.round(file.size/1024)
 
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d')
-    const img = new Image()
+      // if greater than 5mb
+      if (fileSize > 5120) {
+        photoError('Photo must be smaller than 5mb.')
+      }
 
-    img.onload = function() {
-      console.log('load img')
+      setUploadedFile(file.name)
 
-      canvas.height = img.height
-      canvas.width = img.width
-      context.drawImage(img, 0, 0)
-      const str = canvas.toDataURL(file.type, '')
-      console.info({str})
-      setPhoto(str)
+      const fr = new FileReader()
+      fr.onload = () => {
+        setPhoto(fr.result);
+
+        const img = new Image();
+
+        img.onload = (e) => {
+          const height = e.target.height;
+          const width = e.target.width;
+
+          // photo width/height must be smaller than 2,000 pixels
+          if (height > 2000 || width > 2000) {
+            photoError('Photo width/height must be no greater than 2000 pixels.')
+          }
+        }
+
+        img.onerror = photoError
+
+        img.src = fr.result;
+      }
+
+      fr.onerror = photoError
+
+      fr.readAsDataURL(file)
+
+    } catch (error) {
+      photoError(error)
+      // throw error
     }
-
-    img.src = file.name
   }
 
   const handleSubmit = (event) => {
@@ -106,10 +130,12 @@ const PhotoUpload = (props) => {
               <Label htmlFor="photo">Photo</Label>
               <Input
                   type="file"
-                  onChange={(event) => handlePhoto(event)}
-                  value={photo}
+                  onChange={handlePhoto}
+                  filename={uploadedFile}
                   id="photo"
+                  accept="image/png, image/jpeg"
                 ></Input>
+                <img src={photo} />
             </FormGroup>
           </Form>
         </ModalBody>
