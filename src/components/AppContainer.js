@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
+import { AuthProvider } from "utils/AuthProvider";
 
 function AppContainer({ children, ...rest }) {
   const location = useLocation();
@@ -10,9 +11,11 @@ function AppContainer({ children, ...rest }) {
 
   return (
     <ToastProvider>
-      <div className={className} {...rest}>
-        {children}
-      </div>
+      <AuthProvider>
+        <div className={className} {...rest}>
+          {children}
+        </div>
+      </AuthProvider>
     </ToastProvider>
   );
 }

@@ -45,6 +45,7 @@ const PhotoUpload = (props) => {
       // if greater than 5mb
       if (fileSize > 5120) {
         photoError('Photo must be smaller than 5mb.')
+        return
       }
 
       setUploadedFile(file.name)
@@ -62,6 +63,7 @@ const PhotoUpload = (props) => {
           // photo width/height must be smaller than 2,000 pixels
           if (height > 2000 || width > 2000) {
             photoError('Photo width/height must be no greater than 2000 pixels.')
+            return
           }
         }
 

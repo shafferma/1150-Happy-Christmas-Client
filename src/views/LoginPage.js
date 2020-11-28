@@ -5,17 +5,20 @@ import "styles/LoginPage.scss";
 import Snowman from "components/Snowman";
 import ApiProvider from "utils/ApiProvider";
 import SnowFall from "components/SnowFall";
+import { useAuth } from "utils/AuthProvider";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
 
+  const auth = useAuth()
+
   const handleSubmit = (event) => {
     event.preventDefault();
     ApiProvider.post("/login", { username: username, password: password }).then(
       (response) => {
-        props.updateToken(response.data.sessionToken, response.data.user);
+        auth.updateToken(response.data.sessionToken, response.data.user);
         // direct the user to the home page after login
         history.push("/home");
       }

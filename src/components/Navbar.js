@@ -13,12 +13,15 @@ import { useHistory } from "react-router-dom";
 import RegistrationForm from "./RegistrationForm";
 import PhotoUpload from "./PhotoUpload";
 import "styles/Navbar.scss";
+import { useAuth } from "utils/AuthProvider";
 
 const Sitebar = (props) => {
   const [collapsed, setCollapsed] = useState(true);
   const [showRegister, setShowRegister] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
+
+  const auth = useAuth()
 
   useEffect(() => {
     document.addEventListener("scroll", handleScroll);
@@ -40,14 +43,13 @@ const Sitebar = (props) => {
   let history = useHistory();
   const handleLogout = () => {
     // clears token
-    props.logout();
+    auth.logout();
     // direct user to the homepage
     history.push("/");
   };
 
   const openRegister = () => setShowRegister(true);
   const closeRegister = () => setShowRegister(false);
-
 
   const openUpload = () => setShowUpload(true);
   const closeUpload = () => setShowUpload(false);
@@ -68,7 +70,7 @@ const Sitebar = (props) => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
 
-            {!props.isLoggedIn ? (
+            {!auth.isLoggedIn ? (
               <>
                 <NavItem>
                   <NavLink href="/login">Login</NavLink>
@@ -78,13 +80,13 @@ const Sitebar = (props) => {
                 </NavItem>
               </>
             ) : null}
-            {props.isLoggedIn ? (
+            {auth.isLoggedIn ? (
               <>
                 <NavItem>
                   <NavLink href="/myportfolio">Portfolio</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Button  onClick={openUpload} className="photo-btn">Photo Upload</Button>
+                  <Button onClick={openUpload} className="photo-btn">Photo Upload</Button>
                 </NavItem>
                 <NavItem>
                   <Button onClick={handleLogout}>Logout</Button>
@@ -95,7 +97,6 @@ const Sitebar = (props) => {
         </Collapse>
       </Navbar>
       <RegistrationForm
-        updateToken={props.updateToken}
         open={showRegister}
         close={closeRegister}
       />

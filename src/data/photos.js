@@ -28,7 +28,7 @@ export const updatePhoto = async (photoId, photo) => {
         throw error
     }
 }
-export const deletePhotos = async (photoId) => {
+export const deletePhoto = async (photoId) => {
     try {
         const response = ApiProvider.delete(`photo/${photoId}`)
         return response.data

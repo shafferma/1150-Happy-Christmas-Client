@@ -7,7 +7,7 @@ import PhotoGridItem from "components/PhotoGridItem"
 import { getPhotos } from 'data/photos'
 const photo = require('styles/assets/company-tree.JPG')
 
-const HomePage = () => {
+const HomePage = (props) => {
 
   // const [str, setStr] = useState('')
 

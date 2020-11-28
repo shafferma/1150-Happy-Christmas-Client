@@ -13,6 +13,7 @@ import {
 import ApiProvider from "utils/ApiProvider";
 import { useHistory } from "react-router-dom";
 import "styles/RegistrationForm.css";
+import { useAuth } from "utils/AuthProvider";
 
 // checks if string has one special character or one number
 const validatePassword = RegExp("((?=.*?[0-9]).*|(?=.*?[#?!@$%^&*-]).*)");
@@ -25,6 +26,8 @@ const RegistrationForm = (props) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   let history = useHistory();
+
+  const auth = useAuth()
 
   const resetForm = () => {
     setUsername("");
@@ -63,7 +66,7 @@ const RegistrationForm = (props) => {
         lastname,
       })
         .then((response) => {
-          props.updateToken(response.data.sessionToken);
+          auth.updateToken(response.data.sessionToken);
           props.close();
           resetForm();
           history.push("/homepage");
