@@ -10,7 +10,7 @@ function PhotoGrid(props) {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const [params, setParams] = useState({});
   const [prevDisabled, setPrevDisabled] = useState(true);
   const [nextDisabled, setNextDisabled] = useState(true);
@@ -45,21 +45,20 @@ function PhotoGrid(props) {
       getPhotos(params).then((response) => {
         // destructure rows and count from the response data
         const { rows, count } = response.data;
-
-        // set photo data
         setPhotos(rows);
-
-        // determine if previous button should be disabled
-        setPrevDisabled(page === 1);
-
-        // determine if next button should be disabled
-        const pageCount = Math.ceil(count / limit);
-        setTotalPages(pageCount);
-        setNextDisabled(page >= pageCount);
+        setTotalPages(Math.ceil(count / limit));
       });
     }, 500), // 500 milliseconds, half a sec
     [] // no idea, needed for debounce to work
   );
+
+  useEffect(() => {
+    // determine if previous button should be disabled
+    setPrevDisabled(page === 1);
+
+    // determine if next button should be disabled
+    setNextDisabled(page >= totalPages);
+  }, [page, totalPages])
 
   // increase our page by 1
   function handleNext() {

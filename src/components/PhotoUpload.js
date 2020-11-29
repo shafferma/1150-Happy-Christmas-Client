@@ -10,21 +10,21 @@ import {
   ModalHeader,
   ModalFooter,
 } from "reactstrap";
-import ApiProvider from "utils/ApiProvider";
-import { useHistory } from "react-router-dom";
 import "styles/PhotoUpload.css";
-import { createPhoto } from "data/photos";
+import { createPhoto, updatePhoto } from "data/photos";
 
 const PhotoUpload = (props) => {
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const editPhoto = props.photo || false
+
+  const [name, setName] = useState(editPhoto.name || '');
+  const [description, setDescription] = useState(editPhoto.description || '');
   const [photo, setPhoto] = useState("");
   const [uploadedFile, setUploadedFile] = useState('');
 
   const resetForm = () => {
-    setName("");
-    setDescription("");
+    setName(editPhoto.name || '');
+    setDescription(editPhoto.description || '');
     setPhoto("");
     setUploadedFile('');
   };
@@ -82,20 +82,29 @@ const PhotoUpload = (props) => {
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     try {
-      createPhoto({
-        name,
-        description,
-        photo
-      })
-        .then((response) => {
-          props.close();
-          resetForm();
+
+      let response = undefined
+
+      if (editPhoto) {
+        response = await updatePhoto(editPhoto.id, {
+          name, 
+          description
         })
-        .catch((error) => console.log(error));
+      } else {
+        response = await createPhoto({
+          name,
+          description,
+          photo
+        })
+      }
+
+      props.close();
+      resetForm();
+
     } catch (error) {
       alert(error);
     }
@@ -128,6 +137,8 @@ const PhotoUpload = (props) => {
                   id="description"
                 ></Input>
             </FormGroup>
+
+            {!editPhoto ? (
             <FormGroup>
               <Label htmlFor="photo">Photo</Label>
               <Input
@@ -139,10 +150,13 @@ const PhotoUpload = (props) => {
                 ></Input>
                 <img src={photo} />
             </FormGroup>
+            ) : <img src={editPhoto.url} />}
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={handleSubmit} type="submit">Upload</Button>{" "}
+          <Button onClick={handleSubmit} type="submit">
+            { editPhoto ? 'Update' : 'Upload' }
+          </Button>{" "}
         </ModalFooter>
       </Modal>
     </div>
