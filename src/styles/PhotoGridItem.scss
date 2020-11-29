@@ -1,17 +1,13 @@
 .PhotoGridItem {
 
   &__photo {
-    --grid-item-height: auto;
+    --grid-item-height: 260px;
     height: var(--grid-item-height);
     overflow: hidden;
-    @media screen and (min-width: 680px) {
-      --grid-item-height: 400px;
-    }
-    @media screen and (min-width: 1024) {
-      --grid-item-height: 300px;
-    }
-    @media screen and (min-width: 1200px) {
-      --grid-item-height: 200px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
     }
   }
 

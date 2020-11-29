@@ -16,7 +16,7 @@ function PhotoGridItem(props, context) {
      <img src={photo.url} />
      </div>
      { auth.isLoggedIn ? (
-       <FavoriteButton favorite={photo.isFavorite} photoId={photo.id}/>
+       <FavoriteButton favorite={photo.hasFavorite} photoId={photo.id}/>
      ) : null}
      { auth.isLoggedIn && photo.user.id === auth.user.id ? (
       <DeletePhotoButton photoId={photo.id}/>

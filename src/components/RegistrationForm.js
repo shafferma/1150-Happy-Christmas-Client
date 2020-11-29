@@ -66,7 +66,7 @@ const RegistrationForm = (props) => {
         lastname,
       })
         .then((response) => {
-          auth.updateToken(response.data.sessionToken);
+          auth.updateToken(response.data.sessionToken, response.data.user);
           props.close();
           resetForm();
           history.push("/homepage");

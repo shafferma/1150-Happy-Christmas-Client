@@ -15,15 +15,26 @@ export const useAuth = () => {
 function useAuthProvider() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(false);
+  
+  const logout = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    setUser(false);
+  };
 
   useEffect(() => {
 
-    const token = localStorage.getItem("token");
-    if (token) setIsLoggedIn(true);
+    try {
+      const token = localStorage.getItem("token");
+      if (token) setIsLoggedIn(true);
+      
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) setUser(user);
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) setUser(user);
-
+    } catch (error) {
+      logout()
+    }
+      
   }, [isLoggedIn]);
 
   const updateToken = (token, user) => {
@@ -31,12 +42,6 @@ function useAuthProvider() {
     localStorage.setItem("user", JSON.stringify(user));
     setIsLoggedIn(true);
     setUser(user);
-  };
-
-  const logout = () => {
-    localStorage.clear();
-    setIsLoggedIn(false);
-    setUser(false);
   };
 
   return {
