@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "reactstrap";
-import "styles/MyPortfolio.css";
 import PhotoGrid from "components/PhotoGrid"
 import { useAuth } from "utils/AuthProvider";
 

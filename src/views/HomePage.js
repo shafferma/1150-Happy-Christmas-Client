@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import "styles/HomePage.scss"
 import PhotoGrid from "components/PhotoGrid"
 
 const HomePage = (props) => {

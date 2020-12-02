@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 // import { Button } from "reactstrap";
-import 'styles/Grid.scss';
 
 function Grid(props, context) {
   const GridItem = props.component

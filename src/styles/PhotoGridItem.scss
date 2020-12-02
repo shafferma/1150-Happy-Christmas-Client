@@ -12,7 +12,7 @@
   }
 
   h4 {
-      font-family: 'Tangerine', cursive;
+      font-family: $font-family-title;
       font-size: 48px;
       line-height: 100%;
       padding: 0;
@@ -22,11 +22,11 @@
 
 
 .username {
-    font-family: 'Ubuntu' sans-serif;
+    font-family: $font-family-copy;
 }
 
 .photo-description {
- font-family: 'Ubuntu', sans-serif;
+ font-family: $font-family-copy;
  font-style: italic;
 }
 

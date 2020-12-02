@@ -3,8 +3,26 @@ $theme-colors: (
   "danger": black,
 );
 
-@import 'bootstrap/scss/bootstrap';
+$font-family-title: 'Tangerine', cursive, serif; 
+$font-family-copy: 'Ubuntu' sans-serif;
 
-@import "./styles/Global.scss";
-@import "./styles/Navbar.scss";
-@import "./styles/Modal.scss";
+// bootstrap styling
+@import 'bootstrap/scss/bootstrap'; 
+
+// global styles and components
+@import './styles/Global';
+@import './styles/Form';
+@import './styles/Modal';
+@import './styles/Navbar';
+@import './styles/Pagination';
+@import './styles/Grid';
+
+// components
+@import './styles/PhotoGrid';
+@import './styles/PhotoGridItem';
+
+// pages
+@import './styles/App';
+@import './styles/HomePage';
+@import './styles/LoginPage';
+@import './styles/MyPortfolio';

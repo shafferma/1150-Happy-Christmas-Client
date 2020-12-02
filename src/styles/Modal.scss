@@ -2,12 +2,18 @@
     position: relative;
     padding-right: 58px;
 
+    span {
+        font-family: $font-family-title;
+    }
+
     button {
         position: absolute;
         top: 12px;
         right: 12px;
 
     }
+
+
 }
 
 .modal-title {

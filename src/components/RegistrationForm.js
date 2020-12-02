@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 import ApiProvider from "utils/ApiProvider";
 import { useHistory } from "react-router-dom";
-import "styles/RegistrationForm.css";
 import { useAuth } from "utils/AuthProvider";
 
 // checks if string has one special character or one number

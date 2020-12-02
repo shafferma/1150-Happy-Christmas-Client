@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "utils/AuthProvider";
-import "../styles/PhotoGridItem.scss";
 import DeletePhotoButton from "./DeletePhotoButton";
 import EditPhotoButton from "./EditPhotoButton";
 import FavoriteButton from "./FavoriteButton";
