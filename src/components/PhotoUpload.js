@@ -10,7 +10,7 @@ import {
   ModalHeader,
   ModalFooter,
 } from "reactstrap";
-import "styles/PhotoUpload.css";
+import "styles/PhotoUpload.scss";
 import { createPhoto, updatePhoto } from "data/photos";
 
 const PhotoUpload = (props) => {
