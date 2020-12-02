@@ -26,3 +26,7 @@ $font-family-copy: 'Ubuntu' sans-serif;
 @import './styles/HomePage';
 @import './styles/LoginPage';
 @import './styles/MyPortfolio';
+
+.react-toast-notifications__container {
+  z-index: 5000 !important;
+}

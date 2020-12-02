@@ -10,7 +10,7 @@ function AppContainer({ children, ...rest }) {
   const className = "AppContainer page-" + pageName;
 
   return (
-    <ToastProvider>
+    <ToastProvider autoDismiss={true} autoDismissTimeout={3000}>
       <AuthProvider>
         <div className={className} {...rest}>
           {children}

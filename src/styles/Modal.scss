@@ -1,21 +1,21 @@
 .modal-header {
-    position: relative;
-    padding-right: 58px;
-
-    span {
-        font-family: $font-family-title;
-    }
-
-    button {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-
-    }
+  position: relative;
+  padding-right: 58px;
+  font-size: 30px;
+  justify-content: center;
 
 
-}
+  span {
+    font-family: $font-family-title;
+  }
 
-.modal-title {
+  button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
 
+  .modal-title {
+    font-size: 30px;
+  }
 }

@@ -82,12 +82,20 @@ const Sitebar = (props) => {
                   <NavLink href="/myportfolio">Portfolio</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Button onClick={openUpload} className="photo-btn">Photo Upload</Button>
+                  <Button color="primary" onClick={openUpload} className="photo-btn">Photo Upload</Button>
                 </NavItem>
                 <NavItem>
-                  <Button onClick={handleLogout}>Logout</Button>
+                  <Button color="dark" onClick={handleLogout}>Logout</Button>
+                </NavItem>
+                <NavItem>
+                  { auth.user.username }
                 </NavItem>
               </>
+            ) : null}
+            { auth.user.admin ? (
+              <NavItem>
+                <NavLink href="/admin">Admin</NavLink>
+              </NavItem>
             ) : null}
           </Nav>
         </Collapse>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Form,
   FormGroup,
@@ -11,6 +12,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 import { createPhoto, updatePhoto } from "data/photos";
+import { useToasts } from "react-toast-notifications";
 
 const PhotoUpload = (props) => {
   const editPhoto = props.photo || false;
@@ -19,6 +21,9 @@ const PhotoUpload = (props) => {
   const [description, setDescription] = useState(editPhoto.description || "");
   const [photo, setPhoto] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
+  const history = useHistory();
+
+  const { addToast } = useToasts()
 
   const resetForm = () => {
     setName(editPhoto.name || "");
@@ -83,27 +88,37 @@ const PhotoUpload = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       let response = undefined;
 
+      if (!name) throw 'Name required'
+      if (!description) throw 'Description required'
+      
+      
       if (editPhoto) {
         response = await updatePhoto(editPhoto.id, {
           name,
           description,
         });
+        addToast('Successfully updated photo', { appearance: 'success' })
+
       } else {
+        if (!photo) throw 'Photo required'
         response = await createPhoto({
           name,
           description,
           photo,
         });
+        addToast('Successfully created photo', { appearance: 'success' })
       }
-
+      
+      history.push("/myportfolio");
+      
       props.close();
       resetForm();
+
     } catch (error) {
-      alert(error);
+      addToast(error, { appearance: 'error' })
     }
   };
 
@@ -111,7 +126,7 @@ const PhotoUpload = (props) => {
     <Modal isOpen={props.open}>
       <ModalHeader>
         <span>Upload Photo</span>
-        <Button onClick={props.close}>
+        <Button color="dark" onClick={props.close}>
           <span>x</span>
         </Button>
       </ModalHeader>
@@ -152,7 +167,7 @@ const PhotoUpload = (props) => {
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button onClick={handleSubmit} type="submit">
+        <Button color="primary" onClick={handleSubmit} type="submit">
           {editPhoto ? "Update" : "Upload"}
         </Button>
       </ModalFooter>
