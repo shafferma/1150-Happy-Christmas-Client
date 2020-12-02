@@ -12,7 +12,6 @@ import {
 import { useHistory } from "react-router-dom";
 import RegistrationForm from "./RegistrationForm";
 import PhotoUpload from "./PhotoUpload";
-import "styles/Navbar.scss";
 import { useAuth } from "utils/AuthProvider";
 
 const Sitebar = (props) => {
@@ -55,13 +54,10 @@ const Sitebar = (props) => {
   const closeUpload = () => setShowUpload(false);
 
   return (
-    <div
-      className={classNames({
+      <Navbar color="faded" light expand="md" className={classNames({
         "is-expanded": !collapsed,
         "has-scrolled": hasScrolled,
-      })}
-    >
-      <Navbar color="faded" light expand="md">
+      })}>
         {/* <NavbarBrand href="/" className="mr-auto"></NavbarBrand> */}
         <NavbarToggler onClick={toggleNavbar} className="ml-auto" />
         <Collapse isOpen={!collapsed} navbar>
@@ -95,16 +91,15 @@ const Sitebar = (props) => {
             ) : null}
           </Nav>
         </Collapse>
+        <RegistrationForm
+          open={showRegister}
+          close={closeRegister}
+        />
+        <PhotoUpload
+          open={showUpload}
+          close={closeUpload}
+        />
       </Navbar>
-      <RegistrationForm
-        open={showRegister}
-        close={closeRegister}
-      />
-      <PhotoUpload
-        open={showUpload}
-        close={closeUpload}
-      />
-    </div>
   );
 };
 

@@ -78,18 +78,15 @@ const RegistrationForm = (props) => {
   };
 
   return (
-    <div id="register" role="navigation">
-      <Modal isOpen={props.open} id="registerModal">
-        <ModalHeader className="modalHeader">
-          <div id="mainTitle">Welcome to Happy Christmas!</div>
-          <Button className="closeModal" onClick={props.close}>
+      <Modal isOpen={props.open}>
+        <ModalHeader>
+          <span>Welcome to Happy Christmas!</span>
+          <Button color="danger" onClick={props.close}>
             <span>x</span>
           </Button>
         </ModalHeader>
-        <ModalBody id="modalBody">
-          <div id="modalImage"></div>
-          <div id="modalForm">
-            <Form id="registerForm" onSubmit={handleSubmit}>
+        <ModalBody>
+            <Form>
               <FormGroup>
                 <Label htmlFor="registerUsername">Username</Label>
                 <Input
@@ -142,15 +139,13 @@ const RegistrationForm = (props) => {
                 ></Input>
               </FormGroup>
             </Form>
-          </div>
         </ModalBody>
-        <ModalFooter className="modalFooter">
-          <Button form="registerForm" id="modalSubmitButton" type="submit">
+        <ModalFooter>
+          <Button color="primary" onClick={handleSubmit} type="submit">
             Create Account
-          </Button>{" "}
+          </Button>
         </ModalFooter>
       </Modal>
-    </div>
   );
 };
 
