@@ -1,4 +1,4 @@
-
+/* 
 
 #modalImage {
     display: flex;
@@ -8,9 +8,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
-}
+} */
 
-#registerModal {
+/* #registerModal {
     font-family: 'Tangerine', cursive;
     background-color: rgb(225, 221, 222)
     
@@ -18,15 +18,15 @@
 
 .modalHeader {
     background-color: rgb(225, 221, 222)
-}
+} */
 
-#mainTitle {
+/* #mainTitle {
     font-size: 32px;
     padding-top: 20px;
     z-index: 2;
-}
+} */
 
-#modalBody {
+/* #modalBody {
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
     background-color: rgb(225, 221, 222)
@@ -35,22 +35,18 @@
   .modalFooter {
     background-color: rgb(225, 221, 222);
     justify-content: center;
- }
+ } */
  
  
-@media screen and (min-width: 768px) {
-  #modalImage {
-    /* display: block; */
-  }
+/* @media screen and (min-width: 768px) {
+
   #modalForm {
     width: 50%;
   }
 }
 @media screen and (min-width: 360px) {
-  #modalImage {
-    /* display: block; */
-  }
+
   #modalForm {
     width: 100%;
   }
-}
+} */
