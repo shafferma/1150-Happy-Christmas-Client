@@ -1,29 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { addRating, removeRating } from "data/ratings";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 
 
 function RatingButton(props, context) {
-  const [rating, setRating] = useState(props.ratings);
+  
+  const [rating, setRating] = useState(props.rating || 0);
 
-  const toggleFavorite = () => {
+  useEffect(() => {
+    setRating(props.rating)
+  }, [props.rating])
+
+  const toggleRating = (value) => {
     
-    if (!rating) {
-      addRating(props.photoId) // attempt to add to rating
+    if (value != rating) {
+      addRating(props.photoId, value) // attempt to add to rating
         .then((response) => {
-          // after successful add
-          setFavorite(true); // update local 'fav' variable to true
+          setRating(value);
         });
       return; // 'return' stops the function, otherwise it would execute 'removeRating' below
     }
+
     removeRating(props.photoId).then((response) => {
-      setRating(false);
+      setRating(0);
     });
   };
 
   return (
     <div className="RatingButton">
-      <button onClick={toggleRating} className={rating ? "isRated" : ""}>
-        {!rating ? "Add" : "Remove"} Rating
+      <button onClick={() => toggleRating(1)} className={''}>
+        <FontAwesomeIcon icon={rating >= 1 ? faStarSolid : faStarRegular} />
+      </button>
+      <button onClick={() => toggleRating(2)} className={''}>
+        <FontAwesomeIcon icon={rating >= 2 ? faStarSolid : faStarRegular} />
+      </button>
+      <button onClick={() => toggleRating(3)} className={''}>
+        <FontAwesomeIcon icon={rating >= 3 ? faStarSolid : faStarRegular} />
+      </button>
+      <button onClick={() => toggleRating(4)} className={''}>
+        <FontAwesomeIcon icon={rating >= 4 ? faStarSolid : faStarRegular} />
+      </button>
+      <button onClick={() => toggleRating(5)} className={''}>
+        <FontAwesomeIcon icon={rating >= 5 ? faStarSolid : faStarRegular} />
       </button>
     </div>
   );

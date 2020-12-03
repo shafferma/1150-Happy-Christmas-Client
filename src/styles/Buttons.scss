@@ -1,0 +1,45 @@
+%buttonStyles {
+    background: transparent;
+    border: 0;
+    font-size: 32px;
+    outline: none;
+    
+    &:focus {
+        outline: none;
+    }
+}
+
+.DeleteButton {
+    @extend %buttonStyles;
+
+    svg {
+        color: black;
+    }
+}
+
+.EditPhotoButton {
+    @extend %buttonStyles;
+
+    svg {
+        color: darkslategray;
+    }
+}
+
+.FavoriteButton {
+    @extend %buttonStyles;
+
+    svg {
+        color: red;
+    }
+}
+
+.RatingButton {
+
+    button {
+        @extend %buttonStyles;
+    
+        svg {
+            color: rgb(238, 205, 20);
+        }
+    }
+}

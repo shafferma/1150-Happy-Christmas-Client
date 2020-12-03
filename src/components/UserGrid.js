@@ -1,13 +1,14 @@
 import "./AppContainer";
 import Grid from "components/Grid";
 import UserGridItem from "components/UserGridItem";
-// import { getPhotos } from "data/photos";
+import { getUsers } from "data/users";
 import Pagination from "./Pagination";
 import React, { useEffect, useState, useCallback } from "react";
-// import debounce from "lodash-es/debounce";
+import debounce from "lodash-es/debounce";
 
 function UserGrid(props) {
   const [users, setUsers] = useState([]);
+  // const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [totalPages, setTotalPages] = useState(1);
@@ -42,10 +43,10 @@ function UserGrid(props) {
   const fetchData = useCallback(
     //if the function invoked multiple times we only want to run it once
     debounce((params) => {
-      getPhotos(params).then((response) => {
+      getUsers(params).then((response) => {
         // destructure rows and count from the response data
         const { rows, count } = response.data;
-        setPhotos(rows);
+        setUsers(rows);
         setTotalPages(Math.ceil(count / limit));
       });
     }, 500), // 500 milliseconds, half a sec

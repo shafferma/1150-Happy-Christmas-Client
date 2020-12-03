@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container} from "reactstrap";
 import PhotoGrid from "components/PhotoGrid"
 
 const HomePage = (props) => {
-
-  
 
   return (
     <Container>

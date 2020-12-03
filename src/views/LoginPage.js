@@ -5,6 +5,7 @@ import Snowman from "components/Snowman";
 import ApiProvider from "utils/ApiProvider";
 import SnowFall from "components/SnowFall";
 import { useAuth } from "utils/AuthProvider";
+import { useToasts } from "react-toast-notifications";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -12,16 +13,21 @@ const Login = (props) => {
   let history = useHistory();
 
   const auth = useAuth()
+  const { addToast } = useToasts()
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    ApiProvider.post("/login", { username: username, password: password }).then(
+    ApiProvider.post("/login", { username: username, password: password })
+    .then(
       (response) => {
         auth.updateToken(response.data.sessionToken, response.data.user);
         // direct the user to the home page after login
         history.push("/home");
       }
-    );
+    )
+    .catch(error => {
+      addToast(error.response.data.error, { appearance: 'error' })
+    });
   };
   return (
     <div className="LoginPage">
@@ -29,7 +35,7 @@ const Login = (props) => {
         <Snowman />
         <div className="LoginForm">
           {/* <h1>Login</h1> */}
-          <Form className="Form" onSubmit={handleSubmit}>
+          <Form className="Form">
             <FormGroup>
               <Label htmlFor="username">Username</Label>
               <Input
@@ -47,7 +53,7 @@ const Login = (props) => {
                 value={password}
               />
             </FormGroup>
-            <Button  id="loginButton" color="primary" type="submit">
+            <Button onClick={handleSubmit} color="primary" type="submit">
               Login
             </Button>
           </Form>

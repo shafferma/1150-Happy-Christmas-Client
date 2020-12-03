@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { addFavorite, removeFavorite } from "data/favorites";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 
 /**
  * This comp expects 2 props
@@ -26,11 +29,9 @@ function FavoriteButton(props, context) {
   };
 
   return (
-    <div className="FavoriteButton">
-      <button onClick={toggleFavorite} className={favorite ? "isFavorite" : ""}>
-        {!favorite ? "Add" : "Remove"} Favorite
-      </button>
-    </div>
+    <button onClick={toggleFavorite} className={`FavoriteButton ${favorite ? "isFavorite" : ""}`}>
+      <FontAwesomeIcon icon={!favorite ? faHeartRegular : faHeartSolid} />
+    </button>
   );
 }
 export default FavoriteButton;

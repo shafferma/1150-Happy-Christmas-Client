@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { deletePhoto } from "data/photos";
 import { useToasts } from "react-toast-notifications";
-import {useHistory} from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function DeletePhotoButton(props) {
-
-  const { addToast } = useToasts()
+  const { addToast } = useToasts();
   const history = useHistory();
 
   const handleDelete = () => {
-    deletePhoto(props.photoId).then((response) => {
-      console.log(response)
-    });
-    addToast('Photo deleted', { appearance: 'success' })
 
-    history.push("/myportfolio");
+    // confirm user wants to delete, else stop function
+    if (!window.confirm('Are you sure you want to delete this photo?')) return 
+
+    deletePhoto(props.photoId)
+      .then((response) => {
+        addToast("Photo deleted", { appearance: "success" });
+        history.go(0); // refreshes the page
+      })
+      .catch((error) => {
+        addToast(error.response.data.error, { appearance: "error" });
+      });
   };
 
   return (
-    <div className="DeletePhotoButton">
-      <button onClick={handleDelete}>
-        Delete
-      </button>
-    </div>
+    <button className="DeleteButton" onClick={handleDelete}>
+      <FontAwesomeIcon icon={faTrash} />
+    </button>
   );
 }
 export default DeletePhotoButton;

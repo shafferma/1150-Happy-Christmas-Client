@@ -3,9 +3,9 @@ import { useAuth } from "utils/AuthProvider";
 import DeletePhotoButton from "./DeletePhotoButton";
 import EditPhotoButton from "./EditPhotoButton";
 import FavoriteButton from "./FavoriteButton";
+import RatingButton from "./RatingButton";
 
 function PhotoGridItem(props, context) {
-  //  const photo = props.item
   const [photo, setPhoto] = useState(props.item);
 
   useEffect(() => {
@@ -19,9 +19,10 @@ function PhotoGridItem(props, context) {
       <div className="PhotoGridItem__photo">
         <img src={photo.url} />
       </div>
-      {auth.isLoggedIn ? (
-        <FavoriteButton favorite={photo.hasFavorite} photoId={photo.id} />
-      ) : null}
+      {auth.isLoggedIn ? [
+        <FavoriteButton key={`fav-${photo.id}`} favorite={photo.hasFavorite} photoId={photo.id} />,
+        <RatingButton key={`rate-${photo.id}`} rating={photo.hasRating} photoId={photo.id} />
+       ] : null}
       {auth.isLoggedIn && photo.user.id === auth.user.id
         ? [
             <DeletePhotoButton key={`delete-${photo.id}`} photoId={photo.id} />,

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PhotoUpload from "./PhotoUpload";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
+
+
+// TODO: edit button display on hover with photo (your photo)
 
 function EditPhotoButton(props) {
   const [showUpload, setShowUpload] = useState(false);
@@ -8,14 +13,11 @@ function EditPhotoButton(props) {
   const closeUpload = () => setShowUpload(false);
 
   return (
-    <div className="EditPhotoButton">
-      <button onClick={openUpload}>Edit</button>
-      <PhotoUpload 
-        photo={props.photo} 
-        open={showUpload} 
-        close={closeUpload} 
-      />
-    </div>
+    <button  className="EditPhotoButton" onClick={openUpload}>
+      <FontAwesomeIcon icon={faEdit} />
+      <PhotoUpload photo={props.photo} open={showUpload} close={closeUpload} />
+      
+    </button>
   );
 }
 export default EditPhotoButton;

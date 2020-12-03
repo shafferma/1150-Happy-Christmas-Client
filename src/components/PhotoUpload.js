@@ -16,7 +16,6 @@ import { useToasts } from "react-toast-notifications";
 
 const PhotoUpload = (props) => {
   const editPhoto = props.photo || false;
-
   const [name, setName] = useState(editPhoto.name || "");
   const [description, setDescription] = useState(editPhoto.description || "");
   const [photo, setPhoto] = useState("");
