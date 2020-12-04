@@ -111,7 +111,7 @@ const PhotoUpload = (props) => {
         addToast('Successfully created photo', { appearance: 'success' })
       }
       
-      history.push("/myportfolio");
+      history.go("/myportfolio");
       
       props.close();
       resetForm();

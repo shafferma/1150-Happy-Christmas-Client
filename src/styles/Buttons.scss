@@ -27,7 +27,8 @@
 
 .FavoriteButton {
     @extend %buttonStyles;
-
+    display: flex;
+    text-align: end;
     svg {
         color: red;
     }
