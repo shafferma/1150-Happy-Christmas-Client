@@ -10,7 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Ubuntu", sans-serif;
+  // font-family: "Ubuntu", sans-serif;
+  font-family: $font-family-copy;
 }
 
 code {

@@ -124,7 +124,7 @@ const PhotoUpload = (props) => {
   return (
     <Modal isOpen={props.open}>
       <ModalHeader>
-        <span>Upload Photo</span>
+        <span>{editPhoto ? "Update" : "Upload"} Photo</span>
         <Button color="dark" onClick={props.close}>
           <span>x</span>
         </Button>

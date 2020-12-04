@@ -1,8 +1,14 @@
 %buttonStyles {
     background: transparent;
     border: 0;
-    font-size: 32px;
+    font-size: 24px;
     outline: none;
+    width: 38px;
+    height: 38px;
+
+    svg {
+        color: rgb(59, 56, 56);
+    }
     
     &:focus {
         outline: none;
@@ -11,26 +17,17 @@
 
 .DeleteButton {
     @extend %buttonStyles;
-
-    svg {
-        color: black;
-    }
 }
 
 .EditPhotoButton {
     @extend %buttonStyles;
-
-    svg {
-        color: darkslategray;
-    }
 }
 
 .FavoriteButton {
     @extend %buttonStyles;
-    display: flex;
-    text-align: end;
-    svg {
-        color: red;
+
+    &.isFavorite svg {
+        color: rgb(231, 64, 120);
     }
 }
 
@@ -38,8 +35,8 @@
 
     button {
         @extend %buttonStyles;
-    
-        svg {
+
+        &.active svg {
             color: rgb(238, 205, 20);
         }
     }

@@ -30,19 +30,19 @@ function RatingButton(props, context) {
 
   return (
     <div className="RatingButton">
-      <button onClick={() => toggleRating(1)} className={''}>
+      <button onClick={() => toggleRating(1)} className={rating >= 1 ? 'active' : ''}>
         <FontAwesomeIcon icon={rating >= 1 ? faStarSolid : faStarRegular} />
       </button>
-      <button onClick={() => toggleRating(2)} className={''}>
+      <button onClick={() => toggleRating(2)} className={rating >= 2 ? 'active' : ''}>
         <FontAwesomeIcon icon={rating >= 2 ? faStarSolid : faStarRegular} />
       </button>
-      <button onClick={() => toggleRating(3)} className={''}>
+      <button onClick={() => toggleRating(3)} className={rating >= 3 ? 'active' : ''}>
         <FontAwesomeIcon icon={rating >= 3 ? faStarSolid : faStarRegular} />
       </button>
-      <button onClick={() => toggleRating(4)} className={''}>
+      <button onClick={() => toggleRating(4)} className={rating >= 4 ? 'active' : ''}>
         <FontAwesomeIcon icon={rating >= 4 ? faStarSolid : faStarRegular} />
       </button>
-      <button onClick={() => toggleRating(5)} className={''}>
+      <button onClick={() => toggleRating(5)} className={rating >= 5 ? 'active' : ''}>
         <FontAwesomeIcon icon={rating >= 5 ? faStarSolid : faStarRegular} />
       </button>
     </div>
