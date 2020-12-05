@@ -82,13 +82,13 @@ const Sitebar = (props) => {
                   <NavLink href="/myportfolio">Portfolio</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Button color="primary" onClick={openUpload} className="photo-btn">Photo Upload</Button>
+                  <Button color="primary" onClick={openUpload}>Photo Upload</Button>
                 </NavItem>
                 <NavItem>
                   <Button color="dark" onClick={handleLogout}>Logout</Button>
                 </NavItem>
-                <NavItem>
-                  { auth.user.username }
+                <NavItem className="username"> 
+                  {`Welcome back, ${auth.user.username}`}
                 </NavItem>
               </>
             ) : null}

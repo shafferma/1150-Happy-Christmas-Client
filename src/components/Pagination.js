@@ -5,7 +5,7 @@ function Pagination(props) {
 
   return (
     <div className="Pagination">
-      <Button disabled={props.prevDisabled} onClick={props.prev}>&lt; Prev</Button>
+      <Button id="previous-btn" disabled={props.prevDisabled} onClick={props.prev}>&lt; Prev</Button>
       <span>
           Total Pages: {props.totalPages}
       </span>
@@ -15,7 +15,7 @@ function Pagination(props) {
       <span>
         Page: {props.page}
       </span>
-      <Button disabled={props.nextDisabled} onClick={props.next}>Next &gt;</Button>
+      <Button id="next-btn"  disabled={props.nextDisabled} onClick={props.next}>Next &gt;</Button>
     </div>
   );
 }
