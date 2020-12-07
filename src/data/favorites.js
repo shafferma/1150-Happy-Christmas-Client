@@ -19,10 +19,3 @@ export const removeFavorite = async (photoId = undefined) => {
         throw error
     }
 }
-
-// function addFavorite() {
-//     ApiProvider.delete(`/favorite/${photo.id}`)
-//     .then((response) => {
-//         console.log(response.data)
-//     });
-//   }
