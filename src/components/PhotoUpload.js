@@ -127,7 +127,7 @@ const PhotoUpload = (props) => {
     <Modal isOpen={props.open}>
       <ModalHeader>
         <span>{editPhoto ? "Update" : "Upload"} Photo</span>
-        <Button color="dark" onClick={props.close}>
+        <Button color="faded" onClick={props.close}>
         <span>
               <FontAwesomeIcon icon={faTimesCircle} />
             </span>        </Button>

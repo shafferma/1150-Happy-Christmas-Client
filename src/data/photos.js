@@ -14,7 +14,7 @@ export const getPhotos = async (params = { limit: 12, page: 1}) => {
 }
 export const createPhoto = async (photo) => {
     try {
-        const response = ApiProvider.post('photo', photo)
+        const response = await ApiProvider.post('photo', photo)
         return response.data
     } catch (error) {
         throw error
@@ -22,7 +22,7 @@ export const createPhoto = async (photo) => {
 }
 export const updatePhoto = async (photoId, photo) => {
     try {
-        const response = ApiProvider.put(`photo/${photoId}`, photo)
+        const response = await ApiProvider.put(`photo/${photoId}`, photo)
         return response.data
     } catch (error) {
         throw error
@@ -30,7 +30,7 @@ export const updatePhoto = async (photoId, photo) => {
 }
 export const deletePhoto = async (photoId) => {
     try {
-        const response = ApiProvider.delete(`photo/${photoId}`)
+        const response = await ApiProvider.delete(`photo/${photoId}`)
         return response.data
     } catch (error) {
         throw error
