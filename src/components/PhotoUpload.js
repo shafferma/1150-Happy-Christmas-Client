@@ -119,7 +119,7 @@ const PhotoUpload = (props) => {
       resetForm();
 
     } catch (error) {
-      addToast(error, { appearance: 'error' })
+      alert(error, { appearance: 'error' })
     }
   };
 
