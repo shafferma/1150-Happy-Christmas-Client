@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "utils/AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { useToasts } from "react-toast-notifications";
 
 // checks if string has one special character or one number
 const validatePassword = RegExp("((?=.*?[0-9]).*|(?=.*?[#?!@$%^&*-]).*)");
@@ -27,7 +28,7 @@ const RegistrationForm = (props) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   let history = useHistory();
-
+  const { addToast } = useToasts()
   const auth = useAuth()
 
   const resetForm = () => {
@@ -72,7 +73,9 @@ const RegistrationForm = (props) => {
           resetForm();
           history.push("/homepage");
         })
-        .catch((error) => console.log(error));
+        .catch(error => {
+          addToast(error.response.data.error, { appearance: 'error' })
+        });
     } catch (error) {
       alert(error);
     }
