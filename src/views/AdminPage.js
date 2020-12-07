@@ -1,15 +1,15 @@
 import React from "react";
 import {Container} from 'reactstrap';
-import UserGrid from 'components/UserGrid'
+import PhotoGrid from 'components/PhotoGrid'
 
 const AdminPage = (props) => {
 
   return (
     <Container>
-    <div>
-        admin yo
-    </div>
-    <UserGrid />
+      <h1>
+          Admin
+      </h1>
+      <PhotoGrid />
     </Container>
   );
 };

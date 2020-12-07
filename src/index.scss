@@ -1,10 +1,15 @@
 $theme-colors: (
   "primary": #006f57,
-  "danger": black,
+  // "danger": black,
 );
 
 $font-family-title: 'Tangerine', cursive, serif; 
 $font-family-copy: 'Ubuntu' sans-serif;
+
+// breakpoint
+$mobile: 680px;
+$tablet: 768px;
+$desktop: 1100px;
 
 // bootstrap styling
 @import 'bootstrap/scss/bootstrap'; 

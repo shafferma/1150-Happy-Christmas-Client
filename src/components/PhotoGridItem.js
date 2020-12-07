@@ -14,14 +14,15 @@ function PhotoGridItem(props, context) {
 
   const auth = useAuth();
 
+  const canManagePhoto = auth.isLoggedIn && (photo.user.id === auth.user.id || auth.user.admin)
+
   return (
     <div className={`PhotoGridItem ${props.className}`}>
       <div className="owner-ctrls">
         <span>{photo.user.username}</span>
 
         {/* owner controls */}
-        {auth.isLoggedIn && photo.user.id === auth.user.id
-          ? [
+        {canManagePhoto ? [
               <DeletePhotoButton
                 key={`delete-${photo.id}`}
                 photoId={photo.id}

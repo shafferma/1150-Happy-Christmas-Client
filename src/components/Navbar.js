@@ -71,7 +71,7 @@ const Sitebar = (props) => {
                 <NavItem>
                   <NavLink href="/login">Login</NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="navbar-actions">
                   <Button color="primary" onClick={openRegister}>Register</Button>
                 </NavItem>
               </>
@@ -81,21 +81,25 @@ const Sitebar = (props) => {
                 <NavItem>
                   <NavLink href="/myportfolio">Portfolio</NavLink>
                 </NavItem>
-                <NavItem>
-                  <Button color="primary" onClick={openUpload}>Photo Upload</Button>
-                </NavItem>
-                <NavItem>
-                  <Button color="dark" onClick={handleLogout}>Logout</Button>
-                </NavItem>
-                <NavItem className="username"> 
-                  {`Welcome back, ${auth.user.username}`}
-                </NavItem>
               </>
             ) : null}
             { auth.user.admin ? (
               <NavItem>
                 <NavLink href="/admin">Admin</NavLink>
               </NavItem>
+            ) : null}
+            {auth.isLoggedIn ? (
+              <>
+                <NavItem className="navbar-actions">
+                  <Button color="primary" onClick={openUpload}>Photo Upload</Button>
+                </NavItem>
+                <NavItem>
+                  <Button color="dark" onClick={handleLogout}>Logout</Button>
+                </NavItem>
+                {/* <NavItem className="username"> 
+                  {`Welcome back, ${auth.user.username}`}
+                </NavItem> */}
+              </>
             ) : null}
           </Nav>
         </Collapse>

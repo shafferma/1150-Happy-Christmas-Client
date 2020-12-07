@@ -13,6 +13,8 @@ import {
 import ApiProvider from "utils/ApiProvider";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "utils/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
 // checks if string has one special character or one number
 const validatePassword = RegExp("((?=.*?[0-9]).*|(?=.*?[#?!@$%^&*-]).*)");
@@ -80,8 +82,10 @@ const RegistrationForm = (props) => {
       <Modal isOpen={props.open}>
         <ModalHeader>
           <span>Welcome to Happy Christmas!</span>
-          <Button color="danger" onClick={props.close}>
-            <span>x</span>
+          <Button color="faded" onClick={props.close}>
+            <span>
+              <FontAwesomeIcon icon={faTimesCircle} />
+            </span>
           </Button>
         </ModalHeader>
         <ModalBody>

@@ -13,6 +13,8 @@ import {
 } from "reactstrap";
 import { createPhoto, updatePhoto } from "data/photos";
 import { useToasts } from "react-toast-notifications";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
 const PhotoUpload = (props) => {
   const editPhoto = props.photo || false;
@@ -126,8 +128,9 @@ const PhotoUpload = (props) => {
       <ModalHeader>
         <span>{editPhoto ? "Update" : "Upload"} Photo</span>
         <Button color="dark" onClick={props.close}>
-          <span>x</span>
-        </Button>
+        <span>
+              <FontAwesomeIcon icon={faTimesCircle} />
+            </span>        </Button>
       </ModalHeader>
       <ModalBody>
         <Form>

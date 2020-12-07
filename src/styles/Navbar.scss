@@ -16,4 +16,23 @@
     box-shadow: 0px -8px 18px 8px rgba(0,0,0,0.25);
   }
 
+  .btn {
+    border-radius: 64px;
+    margin: 4px 0;
+
+    @media screen and (min-width: $tablet) {
+      margin: 0 0 0 4px;
+    }
+  }
+
+  &-nav {
+    width: 100%;
+  }
+
+  &-actions {
+
+    @media screen and (min-width: $tablet) {
+      margin-left: auto;
+    }
+  }
 }
