@@ -5,6 +5,7 @@ import { getPhotos } from "data/photos";
 import Pagination from "./Pagination";
 import React, { useEffect, useState, useCallback } from "react";
 import debounce from "lodash-es/debounce";
+import { useDataRefresh } from 'utils/DataRefreshProvider'
 
 function PhotoGrid(props) {
   const [photos, setPhotos] = useState([]);
@@ -18,7 +19,6 @@ function PhotoGrid(props) {
   /**
    *  Update params if param-related variable change
    */
-
   useEffect(() => {
     setParams({
       page,
@@ -30,9 +30,21 @@ function PhotoGrid(props) {
   /*
   Fetch our data if params change
   */
+  const refetch = () => fetchData(params);
+  useEffect(() => refetch(), [params]);
+
+  const { photoRefresh } = useDataRefresh()
   useEffect(() => {
-    fetchData(params);
-  }, [params]);
+    photoRefresh.on(() => refetch())
+
+    return () => {
+      photoRefresh.off(() => refetch())
+    }
+  }, [])
+
+  // const photoRefresh = usePhotoRefreshHook()
+  // photoRefresh.on(() => refetch())
+
 
   /**
    * Wrap fetchData in useCallback and
@@ -80,7 +92,7 @@ function PhotoGrid(props) {
 
   return (
     <div className="PhotoGrid">
-      <Grid items={photos} component={PhotoGridItem} />
+      <Grid items={photos} refetch={refetch} component={PhotoGridItem} />
       <Pagination
         totalPages={totalPages}
         itemsPerPage={limit}

@@ -24,10 +24,15 @@ function PhotoGridItem(props, context) {
         {/* owner controls */}
         {canManagePhoto ? [
               <DeletePhotoButton
+                refetch={props.refetch || null}
                 key={`delete-${photo.id}`}
                 photoId={photo.id}
               />,
-              <EditPhotoButton key={`edit-${photo.id}`} photo={photo} />,
+              <EditPhotoButton 
+                refetch={props.refetch || null}
+                key={`edit-${photo.id}`} 
+                photo={photo} 
+              />,
             ]
           : null}
       </div>

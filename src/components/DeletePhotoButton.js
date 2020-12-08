@@ -17,7 +17,8 @@ function DeletePhotoButton(props) {
     deletePhoto(props.photoId)
       .then((response) => {
         addToast("Photo deleted", { appearance: "success" });
-        history.go(0); // refreshes the page
+        // history.go(0); // refreshes the page
+        props.refetch && props.refetch()
       })
       .catch((error) => {
         console.log(error)

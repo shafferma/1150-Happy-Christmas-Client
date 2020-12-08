@@ -8,9 +8,10 @@ function Grid(props, context) {
     return props?.items?.map((value, index) => {
       return (
         <GridItem
-         item={value}
-         key={`grid-item-${index}`} 
-         className="GridItem"
+          refetch={props.refetch || null}
+          item={value}
+          key={`grid-item-${index}`} 
+          className="GridItem"
          />
       )
     }) || null

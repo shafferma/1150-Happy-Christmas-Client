@@ -15,6 +15,7 @@ import { createPhoto, updatePhoto } from "data/photos";
 import { useToasts } from "react-toast-notifications";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { useDataRefresh } from 'utils/DataRefreshProvider'
 
 const PhotoUpload = (props) => {
   const editPhoto = props.photo || false;
@@ -22,7 +23,7 @@ const PhotoUpload = (props) => {
   const [description, setDescription] = useState(editPhoto.description || "");
   const [photo, setPhoto] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   const { addToast } = useToasts()
 
@@ -39,14 +40,23 @@ const PhotoUpload = (props) => {
     alert(error);
   };
 
+  const { photoRefresh } = useDataRefresh()
+
+  /**
+   * Handle File Upload Event. Runs as soon as the User selects a file to upload (clicks OK)
+   */
   const handlePhoto = (event) => {
+    // prevent any form submission
     event.preventDefault();
+
     try {
+      // grab the first, and only, file available
       const file = event.target.files[0];
 
+      // we check the file size
       const fileSize = Math.round(file.size / 1024);
 
-      // if greater than 5mb
+      // if the file size is greater than 5mb, throw an error
       if (fileSize > 5120) {
         photoError("Photo must be smaller than 5mb.");
         return;
@@ -54,12 +64,20 @@ const PhotoUpload = (props) => {
 
       setUploadedFile(file.name);
 
+      // create a File Reader, this is to get more info about our file
       const fr = new FileReader();
+
+      // this runs when we use `fr.readAsDataURL(file);`
       fr.onload = () => {
+
+        // save the base64 string to our photo variable
         setPhoto(fr.result);
 
+        // create an Image, not seen by the User
+        // we only do this image stuff to ensure the photo is within our width/height constraints
         const img = new Image();
 
+        // when we load the image with a value, set `img.src`, we run this function
         img.onload = (e) => {
           const height = e.target.height;
           const width = e.target.width;
@@ -75,12 +93,17 @@ const PhotoUpload = (props) => {
 
         img.onerror = photoError;
 
+        // setting src will run the `onload` function above
         img.src = fr.result;
       };
 
+      // handle any error that may occur from loading our file
       fr.onerror = photoError;
 
+      // load the file into the File Reader, causing `onload` to trigger
+      // converts the file into a base64 string
       fr.readAsDataURL(file);
+
     } catch (error) {
       photoError(error);
       // throw error
@@ -113,7 +136,7 @@ const PhotoUpload = (props) => {
         addToast('Successfully created photo', { appearance: 'success' })
       }
       
-      history.go("/myportfolio");
+      photoRefresh.trigger()
       
       props.close();
       resetForm();

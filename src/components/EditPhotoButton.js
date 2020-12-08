@@ -15,8 +15,7 @@ function EditPhotoButton(props) {
   return (
     <button  className="EditPhotoButton" onClick={openUpload}>
       <FontAwesomeIcon icon={faEdit} />
-      <PhotoUpload photo={props.photo} open={showUpload} close={closeUpload} />
-      
+      <PhotoUpload refetch={props.refetch} photo={props.photo} open={showUpload} close={closeUpload} />
     </button>
   );
 }
