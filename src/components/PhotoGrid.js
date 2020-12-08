@@ -27,25 +27,6 @@ function PhotoGrid(props) {
     });
   }, [page, limit, props.params]);
 
-  /*
-  Fetch our data if params change
-  */
-  const refetch = () => fetchData(params);
-  useEffect(() => refetch(), [params]);
-
-  const { photoRefresh } = useDataRefresh()
-  useEffect(() => {
-    photoRefresh.on(() => refetch())
-
-    return () => {
-      photoRefresh.off(() => refetch())
-    }
-  }, [])
-
-  // const photoRefresh = usePhotoRefreshHook()
-  // photoRefresh.on(() => refetch())
-
-
   /**
    * Wrap fetchData in useCallback and
    * debounce to prevent multiple
@@ -63,6 +44,18 @@ function PhotoGrid(props) {
     }, 500), // 500 milliseconds, half a sec
     [] // no idea, needed for debounce to work
   );
+  
+  /**
+   * Fetch our data if params change
+   */
+  const { photoRefresh } = useDataRefresh()
+  const refetch = () => fetchData(params);
+  useEffect(() => {
+    refetch()
+    photoRefresh.on(() => refetch())
+    return () => photoRefresh.off(() => refetch())
+  }, [params])
+
 
   useEffect(() => {
     // determine if previous button should be disabled

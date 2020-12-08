@@ -28,13 +28,6 @@ function UserTable(props) {
     });
   }, [page, limit, props.params]);
 
-  /*
-  Fetch our data if params change
-  */
-  useEffect(() => {
-    fetchData(params);
-  }, [params]);
-  
   /**
    * Wrap fetchData in useCallback and
    * debounce to prevent multiple
@@ -53,13 +46,15 @@ function UserTable(props) {
     [] // no idea, needed for debounce to work
   );
 
-  
-  const { userRefresh } = useDataRefresh()
+  /*
+  Fetch our data if params change
+  */
+ const { userRefresh } = useDataRefresh()
   useEffect(() => {
+    fetchData(params);
     userRefresh.on(() => fetchData(params))
     return () => userRefresh.off()
-  }, []);
-
+  }, [params]);
 
   useEffect(() => {
     // determine if previous button should be disabled
