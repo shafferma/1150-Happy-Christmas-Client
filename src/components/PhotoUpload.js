@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Form,
@@ -24,6 +24,8 @@ const PhotoUpload = (props) => {
   const [photo, setPhoto] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
   // const history = useHistory();
+
+  useEffect(() => resetForm(), [props.photo])
 
   const { addToast } = useToasts()
 

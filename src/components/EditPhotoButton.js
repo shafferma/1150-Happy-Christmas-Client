@@ -8,6 +8,11 @@ import { faEdit } from "@fortawesome/free-regular-svg-icons";
 
 function EditPhotoButton(props) {
   const [showUpload, setShowUpload] = useState(false);
+  const [photo, setPhoto] = useState(props.photo);
+
+  useEffect(() => {
+    setPhoto(props.photo);
+  }, [props.photo]);
 
   const openUpload = () => setShowUpload(true);
   const closeUpload = () => setShowUpload(false);
@@ -15,7 +20,7 @@ function EditPhotoButton(props) {
   return (
     <button  className="EditPhotoButton" onClick={openUpload}>
       <FontAwesomeIcon icon={faEdit} />
-      <PhotoUpload refetch={props.refetch} photo={props.photo} open={showUpload} close={closeUpload} />
+      <PhotoUpload refetch={props.refetch} photo={photo} open={showUpload} close={closeUpload} />
     </button>
   );
 }
