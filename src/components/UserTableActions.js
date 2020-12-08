@@ -13,7 +13,7 @@ function UserTableActions(props) {
     return (
         <div style={{display: 'flex'}}>
             <EditUserButton user={user} />
-            <DeleteUserButton userId={user.id} />
+            <DeleteUserButton username={user.username} />
         </div>
     )
 }
