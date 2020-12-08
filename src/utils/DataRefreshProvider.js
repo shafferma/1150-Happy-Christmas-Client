@@ -16,12 +16,12 @@ export const useDataRefresh = () => {
 function useDataRefreshProvider() {
 
   const photoRefresh = useEventHook()
-  // const users = useEventHook()
+  const userRefresh = useEventHook()
   // const auth = useEventHook()
  
   return {
     photoRefresh,
-    // users,
+    userRefresh,
     // auth,
   };
 }

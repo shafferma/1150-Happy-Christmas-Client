@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { Button } from "reactstrap";
 import UserForm from "./UserForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
 
 function EditUserButton(props) {
   const [showUpload, setShowUpload] = useState(false);
@@ -8,14 +11,14 @@ function EditUserButton(props) {
   const closeUpload = () => setShowUpload(false);
 
   return (
-    <div className="EditUserButton">
-      <button onClick={openUpload}>Edit</button>
-      <UserForm 
+    <Button color={'primary'} className="EditUserButton" onClick={openUpload}>
+      <FontAwesomeIcon icon={faEdit} />
+      <UserForm
         user={props.user} 
         open={showUpload} 
         close={closeUpload} 
       />
-    </div>
+    </Button>
   );
 }
 export default EditUserButton;

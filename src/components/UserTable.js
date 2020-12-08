@@ -1,12 +1,13 @@
 import "./AppContainer";
-import Grid from "components/Grid";
-import UserGridItem from "components/UserGridItem";
+import Table from "components/Table";
+import UserTableActions from "components/UserTableActions";
 import { getUsers } from "data/users";
 import Pagination from "./Pagination";
 import React, { useEffect, useState, useCallback } from "react";
 import debounce from "lodash-es/debounce";
+import { useDataRefresh } from "utils/DataRefreshProvider";
 
-function UserGrid(props) {
+function UserTable(props) {
   const [users, setUsers] = useState([]);
   // const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
@@ -19,7 +20,6 @@ function UserGrid(props) {
   /**
    *  Update params if param-related variable change
    */
-
   useEffect(() => {
     setParams({
       page,
@@ -34,7 +34,7 @@ function UserGrid(props) {
   useEffect(() => {
     fetchData(params);
   }, [params]);
-
+  
   /**
    * Wrap fetchData in useCallback and
    * debounce to prevent multiple
@@ -52,6 +52,14 @@ function UserGrid(props) {
     }, 500), // 500 milliseconds, half a sec
     [] // no idea, needed for debounce to work
   );
+
+  
+  const { userRefresh } = useDataRefresh()
+  useEffect(() => {
+    userRefresh.on(() => fetchData(params))
+    return () => userRefresh.off()
+  }, []);
+
 
   useEffect(() => {
     // determine if previous button should be disabled
@@ -79,9 +87,33 @@ function UserGrid(props) {
     setPage(tempPage);
   }
 
+  const columnSchema = [
+    {
+      label: 'Username',
+      field: 'username',
+    },
+    {
+      label: 'Firstname',
+      field: 'firstname',
+    },
+    {
+      label: 'Lastname',
+      field: 'lastname',
+    },
+    {
+      label: 'Email',
+      field: 'email',
+    },
+    {
+      label: 'Admin',
+      field: 'admin',
+      format: (val) => val ? 'Yes' : 'No'
+    },
+  ]
+
   return (
-    <div className="UserGrid">
-      <Grid items={users} component={UserGridItem} />
+    <div className="UserTable">
+      <Table rows={users} columns={columnSchema} actionsComponent={UserTableActions} />
       <Pagination
         totalPages={totalPages}
         itemsPerPage={limit}
@@ -95,4 +127,4 @@ function UserGrid(props) {
   );
 }
 
-export default UserGrid;
+export default UserTable;

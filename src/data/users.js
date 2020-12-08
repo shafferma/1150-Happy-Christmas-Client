@@ -5,16 +5,23 @@ import ApiProvider from "utils/ApiProvider"
  */
 export const getUsers = async (params = { limit: 12, page: 1}) => {
     try {
-        console.info({params})
         const response = await ApiProvider.get('users', { params })
         return response.data
     } catch (error) {
         throw error
     }
 }
-export const updateUser = async (userId, user) => {
+export const registerUser = async (user) => {
     try {
-        const response = await ApiProvider.put(`user/${userId}`, user)
+        const response = await ApiProvider.post(`register`, user)
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}
+export const updateUser = async (username, user) => {
+    try {
+        const response = await ApiProvider.put(`user/${username}`, user)
         return response.data
     } catch (error) {
         throw error

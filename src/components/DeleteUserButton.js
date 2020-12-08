@@ -2,9 +2,11 @@ import React from "react";
 import { useToasts } from "react-toast-notifications";
 import {useHistory} from "react-router-dom";
 import { deleteUser } from "data/users";
+import { Button } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
-function DeleteUserButton(props) {
+function DeleteUserButton(props, { style }) {
 
   const { addToast } = useToasts()
   const history = useHistory();
@@ -19,15 +21,12 @@ function DeleteUserButton(props) {
       }).catch(error => {
         addToast(error.response.data.error, { appearance: 'error' })
       });
-
   };
 
   return (
-    <div className="DeleteUserButton">
-      <button onClick={handleDelete}>
-        Delete
-      </button>
-    </div>
+    <Button style={{ marginLeft: '4px' }} color={'danger'} className="DeleteUserButton" onClick={handleDelete}>
+      <FontAwesomeIcon icon={faTrash} />
+    </Button>
   );
 }
 

@@ -10,7 +10,7 @@ import {
   Button,
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import RegistrationForm from "./RegistrationForm";
+import UserForm from "./UserForm";
 import PhotoUpload from "./PhotoUpload";
 import { useAuth } from "utils/AuthProvider";
 
@@ -103,7 +103,7 @@ const Sitebar = (props) => {
             ) : null}
           </Nav>
         </Collapse>
-        <RegistrationForm
+        <UserForm
           open={showRegister}
           close={closeRegister}
         />

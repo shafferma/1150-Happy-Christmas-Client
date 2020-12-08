@@ -5,7 +5,6 @@ import ApiProvider from "utils/ApiProvider"
  */
 export const getPhotos = async (params = { limit: 12, page: 1}) => {
     try {
-        console.info({params})
         const response = await ApiProvider.get('photos', { params })
         return response.data
     } catch (error) {
